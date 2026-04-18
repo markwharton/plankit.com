@@ -1,0 +1,9 @@
+# Editor and OS
+*.bak
+*.swp
+.DS_Store
+._*
+
+# Scratch (prefix convention for throwaway drafts)
+_scratch*
+_sketch*
