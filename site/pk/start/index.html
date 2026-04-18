@@ -208,6 +208,12 @@ pk setup</pre>
       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;changelog/ &middot; init/ &middot; preserve/ &middot; release/
     </div>
 
+    <p>If you plan to use <code>pk changelog</code> and <code>pk release</code> for versioned releases, also anchor the changelog with a baseline tag:</p>
+
+    <pre>pk setup --baseline --push</pre>
+
+    <p><code>--baseline</code> tags <code>v0.0.0</code> on HEAD; <code>--push</code> publishes the tag so the CHANGELOG's version-compare links resolve on GitHub. Without <code>--push</code> the tag stays local and pk prints the manual push command &mdash; consistent with the rule that commit and push are separate decisions. See <a href="https://github.com/markwharton/plankit/blob/main/docs/pk-setup.md#baseline-tag-for-pk-changelog">pk setup docs</a> for existing-repo scenarios. Trunk-based projects can skip this &mdash; <code>pk changelog</code> and <code>pk release</code> are opt-in.</p>
+
     <p>Then run <code>/init</code> in Claude Code to add project-specific conventions. It analyzes your codebase, asks about branch protection, and proposes a <code>## Project Conventions</code> section for your CLAUDE.md.</p>
   </div>
 
