@@ -6,6 +6,8 @@ Verifies:
   2. Every class used in HTML is defined in style.css.
   3. Internal href/src links resolve to a real file under site/.
      External links (http://, https://, mailto:) are skipped.
+  4. Doc subpages under site/pk/ all carry the same set of footer links
+     (peer-page navigation drift detector).
 
 Run from the repo root:
   python3 scripts/check.py
@@ -31,6 +33,10 @@ LINK_TAG_RE = re.compile(
 STYLE_BLOCK_RE = re.compile(r"<style\b[^>]*>", re.IGNORECASE)
 CLASS_ATTR_RE = re.compile(r'class="([^"]+)"')
 CSS_CLASS_RE = re.compile(r"\.([a-zA-Z][\w-]*)")
+FOOTER_BLOCK_RE = re.compile(
+    r'<div\s+class="footer">(.*?)</div>', re.DOTALL | re.IGNORECASE
+)
+HREF_RE = re.compile(r'href="([^"]+)"')
 
 LINK_ATTRS = {
     "a": "href",
@@ -70,6 +76,55 @@ def collect_links(html: str) -> list[str]:
     parser = LinkCollector()
     parser.feed(html)
     return parser.links
+
+
+def extract_footer_links(html: str) -> frozenset[str] | None:
+    match = FOOTER_BLOCK_RE.search(html)
+    if not match:
+        return None
+    return frozenset(HREF_RE.findall(match.group(1)))
+
+
+def doc_subpages() -> list[Path]:
+    """Pages under site/pk/ that aren't /pk/index.html itself."""
+    pk_index = SITE / "pk" / "index.html"
+    return sorted(
+        p for p in (SITE / "pk").rglob("index.html") if p != pk_index
+    )
+
+
+def check_doc_footer_drift() -> list[str]:
+    pages = doc_subpages()
+    if len(pages) < 2:
+        return []
+
+    footers: dict[Path, frozenset[str] | None] = {
+        p: extract_footer_links(p.read_text()) for p in pages
+    }
+
+    errors: list[str] = []
+    for p, links in footers.items():
+        if links is None:
+            errors.append(
+                f"{p.relative_to(REPO_ROOT)}: no <div class=\"footer\"> block found"
+            )
+    if errors:
+        return errors
+
+    canonical: set[str] = set()
+    for links in footers.values():
+        assert links is not None
+        canonical |= links
+
+    for p, links in footers.items():
+        assert links is not None
+        missing = canonical - links
+        if missing:
+            errors.append(
+                f"{p.relative_to(REPO_ROOT)}: footer missing peer links: "
+                f"{', '.join(sorted(missing))}"
+            )
+    return errors
 
 
 def resolve_internal(link: str, page: Path) -> Path | None:
@@ -142,6 +197,7 @@ def check() -> list[str]:
             except ValueError as e:
                 errors.append(f"{rel}: broken link {link!r} ({e})")
 
+    errors.extend(check_doc_footer_drift())
     return errors
 
 
@@ -154,7 +210,8 @@ def main() -> int:
         return 1
     print(
         f"OK — {len(PAGES)} pages, /style.css linked everywhere, "
-        f"no inline <style>, all classes defined, internal links resolve"
+        f"no inline <style>, all classes defined, internal links resolve, "
+        f"doc-page footers consistent"
     )
     return 0
 
