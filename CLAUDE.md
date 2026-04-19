@@ -24,10 +24,11 @@ IMPORTANT: Follow these rules at all times.
 
 ### Design system
 
-- **Typography:** Source Serif 4 (body) + Inter (UI/labels), loaded from Google Fonts.
-- **Color tokens:** `--bg #faf8f5`, `--text #2c2825`, `--muted #7a726a`, `--accent #b8510d`, `--rule #e0dbd5`, `--code-bg #f0ece7`.
+- **Typography:** Source Serif 4 (body) + Inter (UI/labels) + SF Mono (code), referenced via `--font-body`, `--font-ui`, `--font-mono` tokens. Web fonts load from Bunny Fonts (privacy-respecting drop-in for Google Fonts) — preconnect + stylesheet `<link>` go in each page's `<head>` before `/style.css`.
+- **Tokens:** colors (`--bg`, `--text`, `--muted`, `--accent`, `--rule`, `--code-bg`); type scale (`--text-xs`…`--text-3xl`, plus `--text-body` 18px); spacing scale (`--space-1` 4px through `--space-11` 120px); plus `--max-width` 720px and `--transition` 0.2s. Reach for tokens before literals.
 - **Layout:** `--max-width: 720px`, single-column. Top mark → h1 → italic subtitle. Footer line: `plankit · pk · mcp-bridge · signals · github`.
-- **List patterns:** `.tools` for the landing-page tool grid (16px Inter title, 20px row padding); `.features` for in-page title-and-description lists (15px Inter title, 16px padding); `.commands` for mono command + description rows; `.steps` for numbered counter lists. All use `<strong>` for the title and `<span>` for the description.
+- **List patterns:** `.tools` for the landing-page tool grid (`--text-base` Inter title, `--space-4` row padding); `.features` for in-page title-and-description lists (`--text-md` Inter title, `--space-3` padding); `.commands` for mono command + description rows; `.steps` for numbered counter lists. The list scaffold (no bullets, top/bottom row borders) is shared via comma-separated selectors. `.features` and `.tools` use `<strong>` for the title and `<span>` for the description; descriptions match `> li > span` only, so don't nest other spans inside list rows.
+- **Link affordance:** the global `a` rule provides accent color, transparent border-bottom, and a `:hover` / `:focus-visible` underline. Don't redeclare it on per-region rules — only override what differs (e.g. `.mark a` overrides color to muted).
 
 ### Page conventions
 
