@@ -6,13 +6,16 @@ Usage:
 
 Defaults to port 8000. Serves from the repo's site/ directory.
 Press Ctrl+C to stop.
+
+If you see "address already in use", a previous server is still bound
+to the port. Free it (replace 8000 with whatever port you used):
+  lsof -ti :8000 | xargs kill
 """
 
 from __future__ import annotations
 
 import functools
 import http.server
-import socketserver
 import sys
 from pathlib import Path
 
@@ -27,6 +30,22 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
             super().copyfile(source, outputfile)
         except (BrokenPipeError, ConnectionResetError):
             pass
+
+    def send_error(self, code, message=None, explain=None):
+        if code == 404 and self.command == "GET":
+            custom_404 = SITE / "404.html"
+            if custom_404.exists():
+                content = custom_404.read_bytes()
+                self.send_response(404)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.end_headers()
+                try:
+                    self.wfile.write(content)
+                except (BrokenPipeError, ConnectionResetError):
+                    pass
+                return
+        super().send_error(code, message, explain)
 
 
 def main() -> int:
@@ -44,7 +63,7 @@ def main() -> int:
 
     handler = functools.partial(QuietHandler, directory=str(SITE))
 
-    with socketserver.TCPServer(("", port), handler) as httpd:
+    with http.server.ThreadingHTTPServer(("", port), handler) as httpd:
         base = f"http://localhost:{port}"
         print(f"Serving {SITE.relative_to(REPO_ROOT)}/ on {base}")
         print(f"  {base}/")
