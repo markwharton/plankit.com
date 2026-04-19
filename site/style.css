@@ -119,44 +119,6 @@ pre {
   margin: 24px 0;
 }
 
-.links {
-  list-style: none;
-  margin: 24px 0;
-}
-
-.links li {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.links li:first-child {
-  border-top: 1px solid var(--rule);
-}
-
-.links .name {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.links .name a {
-  color: var(--text);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
-}
-
-.links .name a:hover {
-  color: var(--accent);
-}
-
-.links .desc {
-  font-size: 16px;
-  color: var(--muted);
-}
-
 .features {
   list-style: none;
   margin: 24px 0;
@@ -180,6 +142,33 @@ pre {
 }
 
 .features span {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.tools {
+  list-style: none;
+  margin: 24px 0;
+}
+
+.tools li {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tools li:first-child {
+  border-top: 1px solid var(--rule);
+}
+
+.tools strong {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tools span {
   font-size: 16px;
   color: var(--muted);
 }

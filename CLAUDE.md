@@ -19,14 +19,15 @@ IMPORTANT: Follow these rules at all times.
 
 - **Static HTML/CSS site** — no build system, no framework, no JavaScript. All deployed content lives in `site/`.
 - **GitHub Pages deploys from `main`** via `.github/workflows/pages.yml`, filtered on `site/**` path changes. Custom domain in `site/CNAME` (plankit.com).
-- **Each HTML page has its own inline `<style>` block** — there is no shared CSS file. Design tokens (`:root` CSS variables) are repeated per page.
-- **Page tree:** `site/index.html` (landing), `site/pk/index.html` (product), `site/pk/start/`, `site/pk/guide/`. Update `site/sitemap.xml` when adding a page.
+- **One shared stylesheet** at `site/style.css`, linked by every page. Design tokens live in `:root`. No inline `<style>` blocks — `scripts/check.py` enforces this.
+- **Page tree:** `site/index.html` (landing), `site/pk/` (product) with `start/`, `guide/`, `notes/`, `site/mcp-bridge/` with `notes/`, `site/signals/`. Update `site/sitemap.xml` when adding a page.
 
 ### Design system
 
 - **Typography:** Source Serif 4 (body) + Inter (UI/labels), loaded from Google Fonts.
 - **Color tokens:** `--bg #faf8f5`, `--text #2c2825`, `--muted #7a726a`, `--accent #b8510d`, `--rule #e0dbd5`, `--code-bg #f0ece7`.
-- **Layout:** `--max-width: 720px`, single-column. Top mark → h1 → italic subtitle. Footer line: `plankit · pk · github`.
+- **Layout:** `--max-width: 720px`, single-column. Top mark → h1 → italic subtitle. Footer line: `plankit · pk · mcp-bridge · signals · github`.
+- **List patterns:** `.tools` for the landing-page tool grid (16px Inter title, 20px row padding); `.features` for in-page title-and-description lists (15px Inter title, 16px padding); `.commands` for mono command + description rows; `.steps` for numbered counter lists. All use `<strong>` for the title and `<span>` for the description.
 
 ### Page conventions
 
