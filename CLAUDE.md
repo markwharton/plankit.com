@@ -53,5 +53,6 @@ The goal is grammatically correct and easy to read. Page names appear in differe
 
 ### Verification
 
-- **No automated tests.** Smoke check: open the changed page in a browser, confirm links resolve, meta tags render, and sitemap entries match the page tree.
+- **Static checks in CI** — `scripts/check.py` runs via `.github/workflows/check.yml` on every push and PR. Catches stylesheet wiring drift, footer drift in both registers (cross-tool and tool-scoped), broken internal links, and undefined CSS classes.
+- **No automated functional tests.** Smoke check: open the changed page in a browser, confirm links resolve, meta tags render, and sitemap entries match the page tree.
 - The Pages workflow filters on `site/**`, so changes outside `site/` do not deploy and need no smoke check.
