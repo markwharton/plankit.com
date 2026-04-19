@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>signals — plankit</title>
+<meta name="description" content="Privacy-first site observability. Counter mode (no personal data) by default; signal mode (daily-rotated salt) for richer metrics. Single-tenant on your own Azure.">
+<meta property="og:title" content="signals — plankit">
+<meta property="og:description" content="Privacy-first site observability. Counter mode by default; signal mode for richer metrics. Single-tenant on your own Azure.">
+<meta property="og:url" content="https://plankit.com/signals">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://plankit.com/signals">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="page">
+
+  <div class="mark"><a href="/">plankit</a> / signals</div>
+
+  <h1>Site observability without surveillance</h1>
+  <p class="subtitle">See what's happening on your site, without watching your visitors.</p>
+
+  <div class="section">
+    <p><code>signals</code> answers simple questions about your site &mdash; how many visitors, where from, which pages, what broke &mdash; without cookies, fingerprinting, or cross-day tracking. The CLI binary is <code>sig</code>; you can also query via Model Context Protocol or a minimal web dashboard.</p>
+    <p>Designed for small sites: single-tenant, your own Azure infrastructure. Open source under MIT, with an auditable beacon script.</p>
+  </div>
+
+  <div class="section">
+    <h2>Two modes</h2>
+    <ul class="features">
+      <li>
+        <strong>Counter mode (default)</strong>
+        <span>No cookies, no IPs retained, no identifiers. Counts pageviews per page, the referring domain, and whether the visitor is on mobile. Nothing else. plankit.com itself runs in this mode.</span>
+      </li>
+      <li>
+        <strong>Signal mode (optional)</strong>
+        <span>Richer metrics for sites that need them. Uses a daily-rotated salt so fingerprints never link across days.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>What it does</h2>
+    <ul class="features">
+      <li>
+        <strong>CLI, MCP, and dashboard</strong>
+        <span>Ask questions via <code>sig</code>, via Model Context Protocol from your AI tooling, or via a minimal web dashboard &mdash; all reading the same narrow question catalog.</span>
+      </li>
+      <li>
+        <strong>Single-tenant on your own Azure</strong>
+        <span>Static Web Apps + Functions + Table Storage + Key Vault. You own the data and the infrastructure.</span>
+      </li>
+      <li>
+        <strong>Auditable beacon</strong>
+        <span>The beacon script is open source and small enough to read end-to-end. The privacy story is verifiable, not just claimed.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Install</h2>
+    <p><code>signals</code> is in development. plankit.com will be its first user; install instructions and downloads land with the first release.</p>
+  </div>
+
+  <hr>
+
+  <p>Source: <a href="https://github.com/markwharton/signals">github.com/markwharton/signals</a> &mdash; MIT licensed (coming with first release).</p>
+
+  <div class="footer">
+    <a href="/">plankit</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="https://github.com/markwharton/signals">github</a>
+  </div>
+
+</main>
+</body>
+</html>

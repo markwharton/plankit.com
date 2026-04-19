@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mcp-bridge — plankit</title>
+<meta name="description" content="A lightweight bridge for MCP servers — connect stdio-only MCP clients to HTTP-based servers. Single Go binary, no runtime dependencies.">
+<meta property="og:title" content="mcp-bridge — plankit">
+<meta property="og:description" content="A lightweight bridge for MCP servers — connect stdio-only MCP clients to HTTP-based servers. Single Go binary, no runtime dependencies.">
+<meta property="og:url" content="https://plankit.com/mcp-bridge">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://plankit.com/mcp-bridge">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="page">
+
+  <div class="mark"><a href="/">plankit</a> / mcp-bridge</div>
+
+  <h1>Bridge for MCP servers</h1>
+  <p class="subtitle">Connect stdio-only MCP clients to HTTP-based MCP servers.</p>
+
+  <div class="section">
+    <p>Claude Desktop speaks stdio; your server speaks HTTP. <code>mcp-bridge</code> translates between the two &mdash; a single Go binary with no runtime dependencies. Designed for stateless JSON mode and serverless backends like Azure Functions and AWS Lambda.</p>
+    <p>Claude Code uses HTTP transport natively, but has known auth and timeout issues; the bridge works reliably for both clients.</p>
+  </div>
+
+  <div class="section">
+    <h2>Install</h2>
+    <p>If you have <a href="https://go.dev/doc/install">Go</a> installed:</p>
+    <pre>go install github.com/markwharton/mcp-bridge@latest</pre>
+    <p>Or download a binary for your platform from the <a href="https://github.com/markwharton/mcp-bridge/releases">releases page</a>. Roughly 5 MB, no runtime dependencies.</p>
+  </div>
+
+  <div class="section">
+    <h2>What it does</h2>
+    <ul class="features">
+      <li>
+        <strong>Bridges stdio &harr; HTTP</strong>
+        <span>Translates Model Context Protocol traffic between stdio-only clients (Claude Desktop) and HTTP-based servers.</span>
+      </li>
+      <li>
+        <strong>Single Go binary</strong>
+        <span>Roughly 5 MB, zero runtime dependencies. Run it directly &mdash; no Python, Node, or container overhead.</span>
+      </li>
+      <li>
+        <strong>Stateless JSON mode</strong>
+        <span>Designed for serverless backends like Azure Functions and AWS Lambda. The bridge is the persistent piece; your server can be ephemeral.</span>
+      </li>
+      <li>
+        <strong>Works with both clients</strong>
+        <span>Claude Desktop needs the bridge (stdio only). Claude Code uses HTTP natively but has auth and timeout edges &mdash; the bridge sidesteps them.</span>
+      </li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <p>Source: <a href="https://github.com/markwharton/mcp-bridge">github.com/markwharton/mcp-bridge</a> &mdash; MIT licensed.</p>
+
+  <div class="footer">
+    <a href="/">plankit</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="https://github.com/markwharton/mcp-bridge">github</a>
+  </div>
+
+</main>
+</body>
+</html>
