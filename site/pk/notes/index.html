@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes from the workshop — pk — plankit</title>
+<meta name="description" content="Release notes for pk — what changed and what you can do with it now.">
+<meta property="og:title" content="Notes from the workshop — pk">
+<meta property="og:description" content="Release notes for pk — what changed and what you can do with it now.">
+<meta property="og:url" content="https://plankit.com/pk/notes">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://plankit.com/pk/notes">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="page">
+
+  <div class="mark"><a href="/">plankit</a> / <a href="/pk/">pk</a> / notes</div>
+
+  <h1>Notes from the workshop</h1>
+  <p class="subtitle">What's new in pk, and what to do with it.</p>
+
+  <div class="section">
+    <h2>v0.11.1 — 2026-04-19 — polish and a repo split</h2>
+    <p>The <code>pk setup</code> tip that appears when no version tags exist is now conditional &mdash; <strong>trunk-based projects</strong> don't get pushed toward <code>--baseline</code>. The <code>pk changelog</code> error for missing tags mentions <code>--at &lt;ref&gt;</code> inline, so late adopters discover the flag at the moment they need it. The plankit site now lives at <a href="https://github.com/markwharton/plankit.com">github.com/markwharton/plankit.com</a>, separate from the CLI repo.</p>
+  </div>
+
+  <div class="section">
+    <h2>v0.11.0 — 2026-04-18 — pk setup --baseline</h2>
+    <p>Anchoring <code>pk changelog</code> is now one command. If your project uses versioned releases, run <strong><code>pk setup --baseline --push</code></strong> &mdash; it tags <code>v0.0.0</code> on HEAD and publishes the tag. Works on new repos and existing ones; pass <code>--at &lt;ref&gt;</code> to fold prior commits into the first changelog entry. Trunk-based projects can skip it. Bonus: <code>/preserve</code> now continues with implementation after saving a plan.</p>
+  </div>
+
+  <hr>
+
+  <p>Full history in the <a href="https://github.com/markwharton/plankit/blob/main/CHANGELOG.md">CHANGELOG</a> on GitHub.</p>
+
+  <div class="footer">
+    <a href="/">plankit</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/pk/start/">start</a> &middot; <a href="/pk/guide/">guide</a> &middot; <a href="/pk/notes/">notes</a> &middot; <a href="https://github.com/markwharton/plankit">github</a>
+  </div>
+
+</main>
+</body>
+</html>
