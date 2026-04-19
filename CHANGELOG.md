@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.0.2] - 2026-04-19
+
+### Changed
+
+- extract inline styles to shared site/style.css (66c88bb)
+
+### Documentation
+
+- add notes from the workshop page at /pk/notes/ (5fd815f)
+- link /pk/notes/ from pk Docs section and doc-page footers (2fb86ee)
+- align pk Docs card label with page h1 (bc2908b)
+- add voice and naming convention to CLAUDE.md (9332f0e)
+- add mcp-bridge and signals tool landing pages (c4c4db3)
+- expand landing page for the workshop; cross-tool footer on top-level pages (3278659)
+- add mcp-bridge notes page with v0.1.0 first release (6569c7e)
+- link notes from mcp-bridge landing via Docs section (81f3d28)
+
+### Maintenance
+
+- add serve and check scripts for local site work (cd383e9)
+- add favicon.ico and apple-touch-icon to silence browser probes (adfd920)
+- add doc-page footer drift detector to check.py (40cd611)
+- run scripts/check.py on push and pull_request (0bf37b3)
+- add 404.html for not-found pages; serve.py supports it locally (64936aa)
+- extend check.py drift detector for two-register footer policy (f797f39)
+- drop example URL list from serve.py startup banner (d114e59)
+- regenerate pk-managed files (877d5fb)
+
 ## [v0.0.1] - 2026-04-19
 
 ### Documentation
@@ -19,3 +47,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - sync .claude/ rules and skills via pk setup (0e2ab2f)
 
 [v0.0.1]: https://github.com/markwharton/plankit.com/compare/v0.0.0...v0.0.1
+[v0.0.2]: https://github.com/markwharton/plankit.com/compare/v0.0.1...v0.0.2
