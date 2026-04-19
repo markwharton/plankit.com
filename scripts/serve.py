@@ -64,12 +64,7 @@ def main() -> int:
     handler = functools.partial(QuietHandler, directory=str(SITE))
 
     with http.server.ThreadingHTTPServer(("", port), handler) as httpd:
-        base = f"http://localhost:{port}"
-        print(f"Serving {SITE.relative_to(REPO_ROOT)}/ on {base}")
-        print(f"  {base}/")
-        print(f"  {base}/pk/")
-        print(f"  {base}/pk/start/")
-        print(f"  {base}/pk/guide/")
+        print(f"Serving {SITE.relative_to(REPO_ROOT)}/ on http://localhost:{port}")
         print("Press Ctrl+C to stop.")
         try:
             httpd.serve_forever()
