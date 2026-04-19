@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes from the workshop — mcp-bridge — plankit</title>
+<meta name="description" content="Release notes for mcp-bridge — what changed and what you can do with it now.">
+<meta property="og:title" content="Notes from the workshop — mcp-bridge">
+<meta property="og:description" content="Release notes for mcp-bridge — what changed and what you can do with it now.">
+<meta property="og:url" content="https://plankit.com/mcp-bridge/notes">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://plankit.com/mcp-bridge/notes">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="page">
+
+  <div class="mark"><a href="/">plankit</a> / <a href="/mcp-bridge/">mcp-bridge</a> / notes</div>
+
+  <h1>Notes from the workshop</h1>
+  <p class="subtitle">What's new in mcp-bridge, and what to do with it.</p>
+
+  <div class="section">
+    <h2>v0.1.0 — 2026-04-19 — first release</h2>
+    <p>First release of <strong>mcp-bridge</strong> &mdash; a single ~5.5&nbsp;MB Go binary that bridges stdio-based MCP clients (Claude Desktop) to remote HTTP MCP servers. No Node or Python runtime &mdash; drop the binary on PATH and go. Also a useful local proxy for Claude Code, which has known issues with HTTP auth headers and connection timeouts.</p>
+    <p>One command does the setup: <code>mcp-bridge setup --name &lt;server&gt; --url &lt;endpoint&gt; --key &lt;api-key&gt;</code> configures both Claude Desktop (stdio bridge) and Claude Code (direct HTTP). <code>mcp-bridge config list</code> and <code>mcp-bridge config remove</code> round out the management surface. Ported from the earlier <code>mcp-bridge-go</code> &mdash; same bridge, now on plankit conventions with its own release cadence.</p>
+  </div>
+
+  <hr>
+
+  <p>Full history in the <a href="https://github.com/markwharton/mcp-bridge/blob/main/CHANGELOG.md">CHANGELOG</a> on GitHub.</p>
+
+  <div class="footer">
+    <a href="/">plankit</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/mcp-bridge/notes/">notes</a> &middot; <a href="https://github.com/markwharton/mcp-bridge">github</a>
+  </div>
+
+</main>
+</body>
+</html>
