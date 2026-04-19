@@ -6,8 +6,13 @@ Verifies:
   2. Every class used in HTML is defined in style.css.
   3. Internal href/src links resolve to a real file under site/.
      External links (http://, https://, mailto:) are skipped.
-  4. Doc subpages under site/pk/ all carry the same set of footer links
-     (peer-page navigation drift detector).
+  4. Footer link consistency, in two registers:
+       - Top-level pages (site root, tool homepages) share one cross-tool
+         chain: plankit / pk / mcp-bridge / signals / github.
+       - Within-tool pages (e.g. /pk/start/, /pk/notes/) share a tool-scoped
+         chain: plankit / pk / start / guide / notes / github.
+     The external "github" link can vary per page (each tool points to its
+     own repo).
 
 Run from the repo root:
   python3 scripts/check.py
@@ -85,21 +90,26 @@ def extract_footer_links(html: str) -> frozenset[str] | None:
     return frozenset(HREF_RE.findall(match.group(1)))
 
 
-def doc_subpages() -> list[Path]:
-    """Pages under site/pk/ that aren't /pk/index.html itself."""
-    pk_index = SITE / "pk" / "index.html"
-    return sorted(
-        p for p in (SITE / "pk").rglob("index.html") if p != pk_index
-    )
+def page_register(page: Path) -> tuple[str, str]:
+    """Classify a page as ("cross", "global") or ("scoped", <tool>).
+
+    Top-level pages (site root files, tool homepages) carry the cross-tool
+    chain. Pages deeper than that carry their tool's within-tool chain.
+    """
+    parts = page.relative_to(SITE).parts
+    if len(parts) == 1:
+        return ("cross", "global")
+    if len(parts) == 2 and parts[-1] == "index.html":
+        return ("cross", "global")
+    return ("scoped", parts[0])
 
 
-def check_doc_footer_drift() -> list[str]:
-    pages = doc_subpages()
-    if len(pages) < 2:
+def check_footer_drift() -> list[str]:
+    if len(PAGES) < 2:
         return []
 
     footers: dict[Path, frozenset[str] | None] = {
-        p: extract_footer_links(p.read_text()) for p in pages
+        p: extract_footer_links(p.read_text()) for p in PAGES
     }
 
     errors: list[str] = []
@@ -111,19 +121,31 @@ def check_doc_footer_drift() -> list[str]:
     if errors:
         return errors
 
-    canonical: set[str] = set()
-    for links in footers.values():
-        assert links is not None
-        canonical |= links
+    groups: dict[tuple[str, str], list[Path]] = {}
+    for p in PAGES:
+        groups.setdefault(page_register(p), []).append(p)
 
-    for p, links in footers.items():
-        assert links is not None
-        missing = canonical - links
-        if missing:
-            errors.append(
-                f"{p.relative_to(REPO_ROOT)}: footer missing peer links: "
-                f"{', '.join(sorted(missing))}"
-            )
+    for (register, scope), pages in groups.items():
+        if len(pages) < 2:
+            continue
+
+        internal: dict[Path, frozenset[str]] = {
+            p: frozenset(href for href in footers[p] if href.startswith("/"))
+            for p in pages
+        }
+
+        canonical: set[str] = set()
+        for s in internal.values():
+            canonical |= s
+
+        label = register if register == "cross" else f"scoped to {scope}"
+        for p, links in internal.items():
+            missing = canonical - links
+            if missing:
+                errors.append(
+                    f"{p.relative_to(REPO_ROOT)}: footer ({label}) missing peer "
+                    f"links: {', '.join(sorted(missing))}"
+                )
     return errors
 
 
@@ -197,7 +219,7 @@ def check() -> list[str]:
             except ValueError as e:
                 errors.append(f"{rel}: broken link {link!r} ({e})")
 
-    errors.extend(check_doc_footer_drift())
+    errors.extend(check_footer_drift())
     return errors
 
 
@@ -211,7 +233,7 @@ def main() -> int:
     print(
         f"OK — {len(PAGES)} pages, /style.css linked everywhere, "
         f"no inline <style>, all classes defined, internal links resolve, "
-        f"doc-page footers consistent"
+        f"footer chain consistent"
     )
     return 0
 
