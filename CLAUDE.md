@@ -34,6 +34,13 @@ IMPORTANT: Follow these rules at all times.
 - Internal links use absolute paths (`/pk/`, `/`), not relative.
 - Favicon uses `/favicon.svg`. Alternates exist (`favicon-green.svg`, `favicon-leather.svg`, `favicon-rust.svg`, `favicon-terminal.svg`) — keep them, don't delete.
 
+### Voice and naming
+
+The goal is grammatically correct and easy to read. Page names appear in different registers — labels (cards, footers, `<title>`), h1, subtitle, inline prose — and they don't all need to match.
+
+- **Within a register, prefer matching.** A Docs card linking to /pk/start/ should say "Get started" if the page's h1 says "Get started" — same role, same wording. Drift between labels for the same page is the kind of inconsistency worth fixing.
+- **Between registers, prefer good English over forced consistency.** "Methodology" works as a card label; "the methodology guide" reads better in a sentence. Both are right because they serve different jobs.
+
 ### Branches and releases
 
 - **All work goes through `develop`** — never commit directly to `main`. Releases merge to `main`, which triggers the Pages deploy.
