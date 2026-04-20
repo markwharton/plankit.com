@@ -41,7 +41,7 @@
     <h2>Setup your project</h2>
     <pre>cd your-project
 pk setup</pre>
-    <p>This creates a <code>CLAUDE.md</code> with critical rules, installs guidelines as <code>.claude/rules/</code> files, adds skills for changelog, release, plan preservation, and project initialization, and writes a bootstrap script that fetches <code>pk</code> into cloud sandboxes. Restart Claude Code to apply changes.</p>
+    <p>This creates a <code>CLAUDE.md</code> with critical rules, installs guidelines as <code>.claude/rules/</code> files, adds skills for changelog, release, ship, plan preservation, and project initialization, and writes a bootstrap script that fetches <code>pk</code> into cloud sandboxes. Restart Claude Code to apply changes.</p>
 
     <div class="tree">
       your-project/<br>
@@ -55,7 +55,7 @@ pk setup</pre>
       &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;plankit-tooling.md<br>
       &ensp;&ensp;&ensp;&ensp;install-pk.sh<br>
       &ensp;&ensp;&ensp;&ensp;skills/<br>
-      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;changelog/ &middot; init/ &middot; preserve/ &middot; release/
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;changelog/ &middot; init/ &middot; preserve/ &middot; release/ &middot; ship/
     </div>
 
     <p>If you plan to use <code>pk changelog</code> and <code>pk release</code> for versioned releases, also anchor the changelog with a baseline tag:</p>
@@ -83,6 +83,10 @@ pk setup</pre>
       <li>
         <strong>/release</strong>
         <span>Read the trailer, create the git tag, merge to the release branch, push. Pre-flight checks run first. One command, fully validated.</span>
+      </li>
+      <li>
+        <strong>/ship</strong>
+        <span>Chain <code>/changelog</code> and <code>/release</code> in one pass, with the preview+confirm gate kept on each step. Resumable &mdash; if the release fails, rerun <code>/ship</code> and it picks up where it left off.</span>
       </li>
     </ul>
   </div>
