@@ -6,6 +6,7 @@
   --accent: #b8510d;
   --rule: #e0dbd5;
   --code-bg: #f0ece7;
+  --hover-bg: #f3ede4;
 
   /* type families */
   --font-body: 'Source Serif 4', Georgia, serif;
@@ -187,6 +188,42 @@ pre {
 .tools > li > span {
   font-size: var(--text-base);
   color: var(--muted);
+}
+
+/* Linkable tool/feature cards: whole row tints on hover and the link covers the full row.
+   Small negative-margin + matching padding eases the tint off the hard content edges while
+   leaving text flush with surrounding headings. Corner radius softens the tint. */
+.tools > li:has(a),
+.features > li:has(a) {
+  position: relative;
+  transition: background var(--transition);
+  margin-left: calc(var(--space-2) * -1);
+  margin-right: calc(var(--space-2) * -1);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  border-radius: 6px;
+}
+
+.tools > li:has(a:hover),
+.tools > li:has(a:focus-visible),
+.features > li:has(a:hover),
+.features > li:has(a:focus-visible) {
+  background: var(--hover-bg);
+}
+
+.tools > li > strong > a::after,
+.features > li > strong > a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Row tint is the hover affordance — suppress the per-link underline inside cards. */
+.tools > li > strong > a:hover,
+.tools > li > strong > a:focus-visible,
+.features > li > strong > a:hover,
+.features > li > strong > a:focus-visible {
+  border-bottom-color: transparent;
 }
 
 /* .commands — mono command + description in a flex row. */
