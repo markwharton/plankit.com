@@ -28,6 +28,11 @@
   <p class="subtitle">What's new in pk, and what to do with it.</p>
 
   <div class="section">
+    <h2>v0.12.0 — 2026-04-19 — clearer errors and better nudges</h2>
+    <p>Run <code>pk setup</code> in a repo without a version tag and it now nudges you toward <strong><code>pk setup --baseline</code></strong> &mdash; the one-step way to anchor <code>pk changelog</code>. When <code>pk version</code> notices an update after a <code>go install</code> bump, it suggests re-running <code>pk setup</code> so your project's pinned <code>install-pk.sh</code> stays in sync. Error messages got friendlier across the board: <code>pk changelog</code> outside a git repo, <code>pk release</code> with an unpushed source branch, and <code>pk version</code>'s semver output. Paired guidance for server-side enforcement lives in the new <a href="https://github.com/markwharton/plankit/blob/main/docs/branch-protection.md">branch protection guide</a>.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.11.1 — 2026-04-19 — polish and a repo split</h2>
     <p>The <code>pk setup</code> tip that appears when no version tags exist is now conditional &mdash; <strong>trunk-based projects</strong> don't get pushed toward <code>--baseline</code>. The <code>pk changelog</code> error for missing tags mentions <code>--at &lt;ref&gt;</code> inline, so late adopters discover the flag at the moment they need it. The plankit site now lives at <a href="https://github.com/markwharton/plankit.com">github.com/markwharton/plankit.com</a>, separate from the CLI repo.</p>
   </div>
