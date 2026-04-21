@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.0] - 2026-04-21
+
+### Added
+
+- hover tint and whole-card click on tool/feature cards (b4e171d)
+
+### Documentation
+
+- list /ship skill alongside /changelog and /release (063d912)
+- add pk v0.13.0 release notes (4944cd5)
+
+### Maintenance
+
+- regenerate pk-managed files for v0.13.0 (7970811)
+
 ## [v0.1.3] - 2026-04-21
 
 ### Documentation
@@ -87,3 +102,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.1.1]: https://github.com/markwharton/plankit.com/compare/v0.1.0...v0.1.1
 [v0.1.2]: https://github.com/markwharton/plankit.com/compare/v0.1.1...v0.1.2
 [v0.1.3]: https://github.com/markwharton/plankit.com/compare/v0.1.2...v0.1.3
+[v0.2.0]: https://github.com/markwharton/plankit.com/compare/v0.1.3...v0.2.0
