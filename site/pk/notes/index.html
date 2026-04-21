@@ -28,6 +28,11 @@
   <p class="subtitle">What's new in pk, and what to do with it.</p>
 
   <div class="section">
+    <h2>v0.13.0 — 2026-04-21 — /ship skill</h2>
+    <p>Cutting a release is now one command. Run <strong><code>/ship</code></strong> in Claude Code and it chains <code>/changelog</code> &rarr; <code>/release</code>, keeping the preview-and-confirm gate on each step so nothing lands unreviewed. If the release half fails, rerun <code>/ship</code> &mdash; it reads the <code>Release-Tag</code> trailer on HEAD and resumes from the release step. <code>pk setup</code> installs it alongside the other managed skills.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.12.0 — 2026-04-19 — clearer errors and better nudges</h2>
     <p>Run <code>pk setup</code> in a repo without a version tag and it now nudges you toward <strong><code>pk setup --baseline</code></strong> &mdash; the one-step way to anchor <code>pk changelog</code>. When <code>pk version</code> notices an update after a <code>go install</code> bump, it suggests re-running <code>pk setup</code> so your project's pinned <code>install-pk.sh</code> stays in sync. Error messages got friendlier across the board: <code>pk changelog</code> outside a git repo, <code>pk release</code> with an unpushed source branch, and <code>pk version</code>'s semver output. Paired guidance for server-side enforcement lives in the new <a href="https://github.com/markwharton/plankit/blob/main/docs/branch-protection.md">branch protection guide</a>.</p>
   </div>
