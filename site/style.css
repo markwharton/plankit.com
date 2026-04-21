@@ -191,8 +191,9 @@ pre {
 }
 
 /* Linkable tool/feature cards: whole row tints on hover and the link covers the full row.
-   Small negative-margin + matching padding eases the tint off the hard content edges while
-   leaving text flush with surrounding headings. Corner radius softens the tint. */
+   A small negative margin + matching padding eases the tint off the hard content edges.
+   The tint is a top-to-bottom gradient that fades into the page background, keeping the
+   affordance subtle on this otherwise flat layout. */
 .tools > li:has(a),
 .features > li:has(a) {
   position: relative;
@@ -201,14 +202,14 @@ pre {
   margin-right: calc(var(--space-2) * -1);
   padding-left: var(--space-2);
   padding-right: var(--space-2);
-  border-radius: 6px;
+  background: linear-gradient(to bottom, transparent, transparent);
 }
 
 .tools > li:has(a:hover),
 .tools > li:has(a:focus-visible),
 .features > li:has(a:hover),
 .features > li:has(a:focus-visible) {
-  background: var(--hover-bg);
+  background: linear-gradient(to bottom, var(--hover-bg), transparent);
 }
 
 .tools > li > strong > a::after,
