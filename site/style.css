@@ -184,6 +184,8 @@ pre {
 .features strong { font-size: var(--text-md); }
 .tools strong    { font-size: var(--text-base); }
 
+.features > li.sub { padding-left: var(--space-5); }
+
 .features > li > span,
 .tools > li > span {
   font-size: var(--text-base);
