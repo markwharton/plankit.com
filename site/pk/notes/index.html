@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and what to do with it.</p>
 
   <div class="section">
+    <h2>v0.13.1 — 2026-04-22 — /preserve polish + settings.json safety</h2>
+    <p>Typing <strong><code>/preserve</code></strong> right after approving a plan now saves it immediately &mdash; no dry-run preview, no extra confirmation. The plan was already approved; preserving it is just bookkeeping. A new <code>.git/pk-pending-plan</code> pointer also makes <code>/preserve</code> pick the correct plan when two Claude sessions have plans open in parallel; before, it sometimes grabbed whichever file in the shared <code>~/.claude/plans/</code> had the freshest mtime.</p>
+    <p><code>pk setup</code> now keeps its hands off <code>.claude/settings.json</code>. It no longer rewrites the file with alphabetical key order, and it no longer silently drops hook-object fields it didn&rsquo;t recognize &mdash; whether those come from another tool or a future Claude Code release. Key order is your choice; unknown fields survive.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.13.0 — 2026-04-21 — /ship skill</h2>
     <p>Cutting a release is now one command. Run <strong><code>/ship</code></strong> in Claude Code and it chains <code>/changelog</code> &rarr; <code>/release</code>, keeping the preview-and-confirm gate on each step so nothing lands unreviewed. If the release half fails, rerun <code>/ship</code> &mdash; it reads the <code>Release-Tag</code> trailer on HEAD and resumes from the release step. <code>pk setup</code> installs it alongside the other managed skills.</p>
   </div>
