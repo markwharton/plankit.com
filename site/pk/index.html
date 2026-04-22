@@ -29,17 +29,7 @@
 
   <div class="section">
     <p>pk is a CLI for <a href="https://code.claude.com">Claude Code</a> that encodes the discipline AI-assisted development needs. Plans commit to an approach before code is written. Rules guide the AI away from common pitfalls. Tests protect what works. Guards block git mutations on protected branches before damage happens.</p>
-    <p>Designed for small teams and independent developers. Single Go binary, zero dependencies, MIT licensed.</p>
-  </div>
-
-  <div class="section">
-    <h2>Install</h2>
-    <p>Download the binary for your platform from the <a href="https://github.com/markwharton/plankit/releases">releases page</a>, put it on your PATH, and run:</p>
-    <pre>pk setup</pre>
-    <p>Or, if you have <a href="https://go.dev/doc/install">Go</a> installed:</p>
-    <pre>go install github.com/markwharton/plankit/cmd/pk@latest
-pk setup</pre>
-    <p><strong>Requirements:</strong> <a href="https://git-scm.com/">git</a> and <a href="https://code.claude.com">Claude Code</a>. The <code>pk</code> binary has no runtime dependencies &mdash; Go is only needed if you install from source. Setup refuses to install outside a git working tree by default; see <a href="https://github.com/markwharton/plankit/blob/main/docs/pk-setup.md">setup docs</a> for non-git use cases.</p>
+    <p>Designed for small teams and independent developers. Single Go binary, zero dependencies.</p>
   </div>
 
   <div class="section">
@@ -64,63 +54,14 @@ pk setup</pre>
     </ul>
   </div>
 
-  <div class="section">
-    <h2>Commands</h2>
-    <ul class="commands">
-      <li><span class="cmd">pk setup</span><span class="desc">Configure project hooks, skills, and CLAUDE.md</span></li>
-      <li><span class="cmd">pk status</span><span class="desc">Show plankit setup state in this project</span></li>
-      <li><span class="cmd">pk teardown</span><span class="desc">Remove plankit from a project (preview by default)</span></li>
-      <li><span class="cmd">pk changelog</span><span class="desc">Generate CHANGELOG.md from conventional commits</span></li>
-      <li><span class="cmd">pk release</span><span class="desc">Tag, merge to release branch, validate, push</span></li>
-      <li><span class="cmd">pk version</span><span class="desc">Print version and check for updates</span></li>
-    </ul>
-    <p>Hook commands (<code>pk guard</code>, <code>pk pin</code>, <code>pk preserve</code>, <code>pk protect</code>) run automatically &mdash; triggered by Claude Code or by other pk commands. You don&rsquo;t invoke them directly.</p>
-  </div>
-
-  <div class="section">
-    <h2>Setup modes</h2>
-    <pre>pk setup                       # default: block guard, manual preserve
-pk setup --guard ask           # prompt instead of blocking
-pk setup --preserve auto       # preserve plans on ExitPlanMode</pre>
-  </div>
-
-  <div class="section">
-    <h2>When the model shifts</h2>
-    <p>pk runs on top of Claude Code&rsquo;s hooks, skills, slash commands, and plan mode. Those primitives evolve with each Claude release &mdash; how slash commands dispatch, how plan mode exits, how long-session context is retained, how auto mode proceeds without prompting. Tooling built around one version&rsquo;s assumptions can behave differently under the next.</p>
-    <p>pk&rsquo;s guarantees live in the CLI layer, not in the model. Git mutation guards, managed-file protection, bounded hook timeouts, single-file plan staging &mdash; pure Go, no network, no model state. What Claude does inside a single turn &mdash; how it schedules work, what it holds in context &mdash; isn&rsquo;t something pk can guarantee, and doesn&rsquo;t try to.</p>
-    <p>When a release exposes an edge case, the fix belongs in the CLI layer: reduce the model-dependence that let the bug in, so the next shift can&rsquo;t re-expose the same class of problem. That&rsquo;s the lifecycle, not an aberration from it. If you hit a surprise, <a href="https://github.com/markwharton/plankit/issues">open an issue</a> &mdash; don&rsquo;t paper over it.</p>
-  </div>
-
-  <div class="section">
-    <h2>Docs</h2>
-    <ul class="features">
-      <li>
-        <strong><a href="/pk/start/">Get started</a></strong>
-        <span>Install, setup, first run.</span>
-      </li>
-      <li>
-        <strong><a href="/pk/guide/">Methodology</a></strong>
-        <span>Plan-driven development, guidelines, testing loop.</span>
-      </li>
-      <li>
-        <strong><a href="/pk/notes/">Release notes</a></strong>
-        <span>What's new in pk.</span>
-      </li>
-      <li>
-        <strong><a href="https://github.com/markwharton/plankit">Source</a></strong>
-        <span>github.com/markwharton/plankit &mdash; MIT licensed.</span>
-      </li>
-    </ul>
-  </div>
-
   <hr>
 
   <div class="section">
-    <p class="aside">pk is the toolkit behind plankit. We use it to build everything. Free for you to use too.</p>
+    <p>Full docs, install, and source on <a href="https://github.com/markwharton/plankit">GitHub</a> &mdash; MIT licensed. <a href="/pk/notes/">What's new in pk</a>.</p>
   </div>
 
   <div class="footer">
-    <a href="/">home</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="/privacy/">privacy</a> &middot; <a href="https://github.com/markwharton/plankit">github</a>
+    <a href="/">home</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="/privacy/">privacy</a>
   </div>
 
 </main>

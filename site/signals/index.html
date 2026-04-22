@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>signals — plankit</title>
-<meta name="description" content="Privacy-first site observability. Counter mode (no personal data) by default; signal mode (daily-rotated salt) for richer metrics. Single-tenant on your own Azure.">
-<meta property="og:title" content="signals — plankit">
-<meta property="og:description" content="Privacy-first site observability. Counter mode by default; signal mode for richer metrics. Single-tenant on your own Azure.">
+<meta name="description" content="Privacy-first site observability. Counter mode: no personal data, no IPs, no identifiers. Single-tenant on your own Azure.">
+<meta property="og:title" content="signals — site observability without surveillance">
+<meta property="og:description" content="Privacy-first site observability. Counter mode: no personal data, no IPs, no identifiers. Single-tenant on your own Azure.">
 <meta property="og:url" content="https://plankit.com/signals">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://plankit.com/signals">
@@ -29,7 +29,7 @@
 
   <div class="section">
     <p><code>signals</code> answers simple questions about your site &mdash; how many visitors, where from, which pages, what broke &mdash; without cookies, fingerprinting, or cross-day tracking. The CLI binary is <code>sig</code>; you can also query via Model Context Protocol or a minimal web dashboard.</p>
-    <p>Designed for small sites: single-tenant, your own Azure infrastructure. Open source under MIT, with an auditable beacon script.</p>
+    <p>Designed for small sites: single-tenant, your own Azure infrastructure. Open source, with an auditable beacon script.</p>
   </div>
 
   <div class="section">
@@ -40,7 +40,7 @@
         <span>No cookies, no IPs retained, no identifiers. Counts pageviews per page, the referring domain, and whether the visitor is on mobile. Nothing else. plankit.com itself runs in this mode.</span>
       </li>
       <li>
-        <strong>Signal mode (optional)</strong>
+        <strong>Signal mode (in development)</strong>
         <span>Richer metrics for sites that need them. Uses a daily-rotated salt so fingerprints never link across days.</span>
       </li>
     </ul>
@@ -71,10 +71,12 @@
 
   <hr>
 
-  <p>Source: <a href="https://github.com/markwharton/signals">github.com/markwharton/signals</a> &mdash; MIT licensed (coming with first release).</p>
+  <div class="section">
+    <p>Source on <a href="https://github.com/markwharton/signals">GitHub</a> &mdash; MIT licensed.</p>
+  </div>
 
   <div class="footer">
-    <a href="/">home</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="/privacy/">privacy</a> &middot; <a href="https://github.com/markwharton/signals">github</a>
+    <a href="/">home</a> &middot; <a href="/pk/">pk</a> &middot; <a href="/mcp-bridge/">mcp-bridge</a> &middot; <a href="/signals/">signals</a> &middot; <a href="/privacy/">privacy</a>
   </div>
 
 </main>

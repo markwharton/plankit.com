@@ -8,11 +8,9 @@ Verifies:
      External links (http://, https://, mailto:) are skipped.
   4. Footer link consistency, in two registers:
        - Top-level pages (site root, tool homepages) share one cross-tool
-         chain: home / pk / mcp-bridge / signals / github.
-       - Within-tool pages (e.g. /pk/start/, /pk/notes/) share a tool-scoped
-         chain: home / pk / start / guide / notes / github.
-     The external "github" link can vary per page (each tool points to its
-     own repo).
+         chain: home / pk / mcp-bridge / signals / privacy.
+       - Within-tool pages (e.g. /pk/notes/, /mcp-bridge/notes/) share a
+         tool-scoped chain with only their tool's pages.
 
 Run from the repo root:
   python3 scripts/check.py
