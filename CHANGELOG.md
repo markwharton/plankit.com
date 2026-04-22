@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.3] - 2026-04-22
+
+### Changed
+
+- promote pk docs to landing, simplify labels (0c041db)
+
+### Maintenance
+
+- regenerate pk-managed files for v0.13.1 (0d14859)
+
 ## [v0.2.2] - 2026-04-22
 
 ### Documentation
@@ -118,3 +128,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.0]: https://github.com/markwharton/plankit.com/compare/v0.1.3...v0.2.0
 [v0.2.1]: https://github.com/markwharton/plankit.com/compare/v0.2.0...v0.2.1
 [v0.2.2]: https://github.com/markwharton/plankit.com/compare/v0.2.1...v0.2.2
+[v0.2.3]: https://github.com/markwharton/plankit.com/compare/v0.2.2...v0.2.3
