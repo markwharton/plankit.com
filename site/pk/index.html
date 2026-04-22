@@ -85,6 +85,13 @@ pk setup --preserve auto       # preserve plans on ExitPlanMode</pre>
   </div>
 
   <div class="section">
+    <h2>When the model shifts</h2>
+    <p>pk runs on top of Claude Code&rsquo;s hooks, skills, slash commands, and plan mode. Those primitives evolve with each Claude release &mdash; how slash commands dispatch, how plan mode exits, how long-session context is retained, how auto mode proceeds without prompting. Tooling built around one version&rsquo;s assumptions can behave differently under the next.</p>
+    <p>pk&rsquo;s guarantees live in the CLI layer, not in the model. Git mutation guards, managed-file protection, bounded hook timeouts, single-file plan staging &mdash; pure Go, no network, no model state. What Claude does inside a single turn &mdash; how it schedules work, what it holds in context &mdash; isn&rsquo;t something pk can guarantee, and doesn&rsquo;t try to.</p>
+    <p>When a release exposes an edge case, the fix belongs in the CLI layer: reduce the model-dependence that let the bug in, so the next shift can&rsquo;t re-expose the same class of problem. That&rsquo;s the lifecycle, not an aberration from it. If you hit a surprise, <a href="https://github.com/markwharton/plankit/issues">open an issue</a> &mdash; don&rsquo;t paper over it.</p>
+  </div>
+
+  <div class="section">
     <h2>Docs</h2>
     <ul class="features">
       <li>
