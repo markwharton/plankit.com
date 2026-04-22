@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.2] - 2026-04-22
+
+### Documentation
+
+- add "When the model shifts" section to /pk (334d0c5)
+- add v0.13.1 notes entry (178c8ec)
+
 ## [v0.2.1] - 2026-04-22
 
 ### Maintenance
@@ -110,3 +117,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.1.3]: https://github.com/markwharton/plankit.com/compare/v0.1.2...v0.1.3
 [v0.2.0]: https://github.com/markwharton/plankit.com/compare/v0.1.3...v0.2.0
 [v0.2.1]: https://github.com/markwharton/plankit.com/compare/v0.2.0...v0.2.1
+[v0.2.2]: https://github.com/markwharton/plankit.com/compare/v0.2.1...v0.2.2
