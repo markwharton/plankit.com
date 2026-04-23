@@ -6,11 +6,8 @@ Verifies:
   2. Every class used in HTML is defined in style.css.
   3. Internal href/src links resolve to a real file under site/.
      External links (http://, https://, mailto:) are skipped.
-  4. Footer link consistency, in two registers:
-       - Top-level pages (site root, tool homepages) share one cross-tool
-         chain: home / pk / mcp-bridge / signals / privacy.
-       - Within-tool pages (e.g. /pk/notes/, /mcp-bridge/notes/) share a
-         tool-scoped chain with only their tool's pages.
+  4. Footer link consistency — every page shares the same chain:
+     home / pk / mcp-bridge / signals / privacy.
 
 Run from the repo root:
   python3 scripts/check.py
@@ -88,20 +85,6 @@ def extract_footer_links(html: str) -> frozenset[str] | None:
     return frozenset(HREF_RE.findall(match.group(1)))
 
 
-def page_register(page: Path) -> tuple[str, str]:
-    """Classify a page as ("cross", "global") or ("scoped", <tool>).
-
-    Top-level pages (site root files, tool homepages) carry the cross-tool
-    chain. Pages deeper than that carry their tool's within-tool chain.
-    """
-    parts = page.relative_to(SITE).parts
-    if len(parts) == 1:
-        return ("cross", "global")
-    if len(parts) == 2 and parts[-1] == "index.html":
-        return ("cross", "global")
-    return ("scoped", parts[0])
-
-
 def check_footer_drift() -> list[str]:
     if len(PAGES) < 2:
         return []
@@ -119,31 +102,22 @@ def check_footer_drift() -> list[str]:
     if errors:
         return errors
 
-    groups: dict[tuple[str, str], list[Path]] = {}
-    for p in PAGES:
-        groups.setdefault(page_register(p), []).append(p)
+    internal: dict[Path, frozenset[str]] = {
+        p: frozenset(href for href in footers[p] if href.startswith("/"))
+        for p in PAGES
+    }
 
-    for (register, scope), pages in groups.items():
-        if len(pages) < 2:
-            continue
+    canonical: set[str] = set()
+    for s in internal.values():
+        canonical |= s
 
-        internal: dict[Path, frozenset[str]] = {
-            p: frozenset(href for href in footers[p] if href.startswith("/"))
-            for p in pages
-        }
-
-        canonical: set[str] = set()
-        for s in internal.values():
-            canonical |= s
-
-        label = register if register == "cross" else f"scoped to {scope}"
-        for p, links in internal.items():
-            missing = canonical - links
-            if missing:
-                errors.append(
-                    f"{p.relative_to(REPO_ROOT)}: footer ({label}) missing peer "
-                    f"links: {', '.join(sorted(missing))}"
-                )
+    for p, links in internal.items():
+        missing = canonical - links
+        if missing:
+            errors.append(
+                f"{p.relative_to(REPO_ROOT)}: footer missing peer "
+                f"links: {', '.join(sorted(missing))}"
+            )
     return errors
 
 
