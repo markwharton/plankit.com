@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.14.0 — 2026-04-23 — tamper-checked binaries, tidier upgrades</h2>
+    <p><code>install-pk.sh</code> now fetches <strong><code>checksums.txt</code></strong> alongside the binary and verifies the SHA256 before installing &mdash; no more wondering whether a network hop tampered with the download, and if <code>sha256sum</code> is missing, install fails loudly rather than silently installing an unverified binary. And when <code>pk setup</code> actually updates a managed file, it now suggests committing those changes on their own: <code>chore(pk): update managed files for v&lt;VERSION&gt;</code>, so pk-upgrade churn stays distinguishable from feature work in your history.</p>
+    <p><code>pk teardown</code> used to silently skip plankit hook removal if it couldn&rsquo;t parse a settings file; now it logs the path and category before continuing, so you can see what it can&rsquo;t clean up. There&rsquo;s also a new methodology section, <a href="https://github.com/markwharton/plankit/blob/main/docs/methodology.md">when the model shifts</a>, on working with plankit across Claude model changes.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.13.1 — 2026-04-22 — /preserve polish + settings.json safety</h2>
     <p>Typing <strong><code>/preserve</code></strong> right after approving a plan now saves it immediately &mdash; no dry-run preview, no extra confirmation. The plan was already approved; preserving it is just bookkeeping. A new <code>.git/pk-pending-plan</code> pointer also makes <code>/preserve</code> pick the correct plan when two Claude sessions have plans open in parallel; before, it sometimes grabbed whichever file in the shared <code>~/.claude/plans/</code> had the freshest mtime.</p>
     <p><code>pk setup</code> now keeps its hands off <code>.claude/settings.json</code>. It no longer rewrites the file with alphabetical key order, and it no longer silently drops hook-object fields it didn&rsquo;t recognize &mdash; whether those come from another tool or a future Claude Code release. Key order is your choice; unknown fields survive.</p>
