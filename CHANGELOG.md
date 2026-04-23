@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.6] - 2026-04-23
+
+### Changed
+
+- split landing page into core tool and workshop sections (fae0abc)
+
+### Documentation
+
+- disclose Bunny Fonts CDN on privacy page (d4e1ea8)
+
+### Maintenance
+
+- update managed files for v0.14.0 (1e625af)
+
 ## [v0.2.5] - 2026-04-23
 
 ### Changed
@@ -148,3 +162,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.3]: https://github.com/markwharton/plankit.com/compare/v0.2.2...v0.2.3
 [v0.2.4]: https://github.com/markwharton/plankit.com/compare/v0.2.3...v0.2.4
 [v0.2.5]: https://github.com/markwharton/plankit.com/compare/v0.2.4...v0.2.5
+[v0.2.6]: https://github.com/markwharton/plankit.com/compare/v0.2.5...v0.2.6
