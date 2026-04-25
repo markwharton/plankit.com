@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.8] - 2026-04-25
+
+### Documentation
+
+- add landing intro; rename workshop section to 'More tools' (f83147e)
+- add v0.14.2–v0.14.3 sandbox note to pk v0.14.1 release entry (bd2da28)
+
+### Maintenance
+
+- update pk-managed files for v0.14.2 (bc40ea4)
+- update pk-managed files for v0.14.3 (e60196d)
+
 ## [v0.2.7] - 2026-04-24
 
 ### Documentation
@@ -175,3 +187,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.5]: https://github.com/markwharton/plankit.com/compare/v0.2.4...v0.2.5
 [v0.2.6]: https://github.com/markwharton/plankit.com/compare/v0.2.5...v0.2.6
 [v0.2.7]: https://github.com/markwharton/plankit.com/compare/v0.2.6...v0.2.7
+[v0.2.8]: https://github.com/markwharton/plankit.com/compare/v0.2.7...v0.2.8
