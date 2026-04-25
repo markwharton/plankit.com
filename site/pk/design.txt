@@ -96,3 +96,43 @@ The question for plankit isn't whether the discipline goes away. It's
 whether the toolkit evolves to encode discipline at each new layer as
 the stack grows — or whether it stays focused on the human-to-agent
 layer where it works today.
+
+---
+
+The "vibe coding" objection has been bothering me — what's the right answer?
+
+The skeptics aren't wrong about what they've seen. Typing prompts at an
+LLM and shipping whatever comes back produces unreliable results, and
+people who've watched that pattern fail are right to call it out. The
+disagreement isn't whether unstructured LLM coding works — it mostly
+doesn't. It's whether structured LLM coding is a real category that
+holds up under scrutiny.
+
+plankit's bet is that it is, and that the methodology is what separates
+the two. The plan is the commitment. Rules counter LLM drift. Tests
+protect what works. Branch guards block git mistakes. None of those are
+AI features — they're the same disciplines a careful human developer
+would apply, encoded into project files where an LLM will actually read
+them. The AI does the typing; the discipline keeps the output
+trustworthy.
+
+The most concrete demonstration so far comes from outside the project.
+In Claude's Cycles (Feb 2026), Donald Knuth — author of The Art of
+Computer Programming, long skeptical of generative AI — documents
+Claude Opus 4.6 solving an open Hamiltonian-cycle decomposition
+problem from his ongoing drafts. The solution was found, the proof was
+written, Kim Morrison formalized it in Lean within days. The session
+ran under explicit plan-driven discipline: Filip Stappers instructed
+Claude to "update this file [plan.md] before doing anything else"
+after every exploration, with no exceptions. That's not vibe coding —
+it's structured AI work producing a real result, and Knuth, who had
+posed the problem himself, said he'd have to revise his view of
+generative AI.
+
+The right framing isn't "AI coding is fine, calm down." It's "yes, the
+failure mode the skeptics describe is real, and the difference is
+methodology." Lakein's line — planning is bringing the future into the
+present so you can do something about it now — predates the LLM era by
+50 years and still describes what makes the work survive. plankit's
+job is to make that discipline practicable for AI-assisted work, not
+to argue the AI is sufficient on its own.
