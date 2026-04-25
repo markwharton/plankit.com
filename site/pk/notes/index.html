@@ -30,6 +30,7 @@
   <div class="section">
     <h2>v0.14.1 — 2026-04-24 — sandbox tag fetch, /ship undo note</h2>
     <p>Claude Code on the web now sees your version tags. The <code>SessionStart</code> bootstrap runs a best-effort <strong><code>git fetch --tags</code></strong> right after installing <code>pk</code>, so <code>pk changelog</code> and <code>pk release</code> have the history they need. The sandbox used to clone only the working branch, so <code>pk changelog</code> failed with &ldquo;no version tags found&rdquo; and pointed you at creating a baseline &mdash; wrong advice when tags already existed on origin. That error now tells you to run <code>git fetch --tags</code> instead; baseline advice still appears when origin is actually bare.</p>
+    <p class="aside">v0.14.2 and v0.14.3 smoothed two more sandbox bootstrap rough edges that only surfaced once we could test in the cloud.</p>
     <p>If you change your mind after <code>pk changelog</code> but before <code>pk release</code>, <code>/ship</code> now reaches for <code>pk changelog --undo</code> to unwind cleanly &mdash; no more improvising with <code>git reset</code>.</p>
   </div>
 
