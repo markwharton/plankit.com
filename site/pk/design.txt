@@ -136,3 +136,39 @@ present so you can do something about it now — predates the LLM era by
 50 years and still describes what makes the work survive. plankit's
 job is to make that discipline practicable for AI-assisted work, not
 to argue the AI is sufficient on its own.
+
+---
+
+Does plankit need to be more formal — like the Residue prompt that
+solved Knuth's even case?
+
+Aquino-Michaels' paper Completing Claude's Cycles (March 2026)
+documents two LLM agents and an orchestrator solving an open
+combinatorial problem under a heavy structured prompt called Residue:
+strict logging format, Strategy Register, forced periodic synthesis,
+escalation triggers. The construction completes the even case Knuth
+left open, and the documented process compressed Knuth's
+31-exploration odd-case path to 5.
+
+I don't think so, and the reason matters. Residue earns its formalism
+on a multi-day open mathematical problem where no human can hold the
+dead-end inventory in their head and the agent runs largely
+unsupervised across many sessions. plankit's lighter scaffolding —
+preserved plan, rules in CLAUDE.md, branch guards — earns its weight
+on plan-driven product development, where the human stays in the loop
+continuously and the plan is the commitment the work answers to. Same
+shape of work, different doses, different problem classes.
+
+What plankit and Residue share matters more than what they don't:
+both bet on discipline as the multiplier — not the AI's raw capability
+— as the thing that makes the work survive. Both produce results that
+belong to the system, not to any single component. The paper's own
+line is direct: "The prompt structures process, not thought."
+
+That's the line plankit can borrow without becoming Residue. plankit
+doesn't need a Strategy Register or a periodic-synthesis trigger to
+inherit the validation. It sits on the same axis, calibrated for a
+different problem class. If the day comes when plankit users start
+running multi-day, multi-session, AI-driven work without supervision,
+the formalism question reopens. Until then, lightweight discipline
+the developer can wield naturally is the right dose.
