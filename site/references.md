@@ -6,6 +6,8 @@
 
 - **"Planning is bringing the future into the present so that you can do something about it now."** — Alan Lakein, *How to Get Control of Your Time and Your Life* (1973). Time management classic that sold 3 million copies. The back cover opens with "To save time, turn to pages 158, 30, and 11" — the man practiced what he preached. Includes "How to waste time for pleasure and profit," the same philosophy as plankit's message that recovered time doesn't have to become more output. [Book](https://www.amazon.com/Control-Your-Time-Life-Signet/dp/0451167724)
 
+- **"It seems that I'll have to revise my opinions about 'generative AI' one of these days."** — Donald Knuth, *Claude's Cycles* (28 Feb 2026, rev. 14 Apr 2026). Knuth — author of *The Art of Computer Programming* and inventor of TeX — narrates Claude Opus 4.6 solving an open Hamiltonian-cycle decomposition problem from his TAOCP drafts. The session ran under explicit plan-driven discipline: Filip Stappers instructed Claude to *"update this file [plan.md] before doing anything else"* after every exploration. The proof was subsequently formalized in Lean. Aligns with plankit's premise that structured LLM use can produce real, verifiable results. [Paper](https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf)
+
 ## Articles
 
 - **"AI Doesn't Reduce Work — It Intensifies It"** — Harvard Business Review, Feb 2026. Eight-month study finding AI consistently increases work intensity through task expansion, blurred boundaries, and increased multitasking. Validates the plankit premise. [Article](https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it)
