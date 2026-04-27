@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.2.9] - 2026-04-28
+
+### Documentation
+
+- add Knuth's Claude's Cycles paper to references (eba38f5)
+- add vibe-coding journal entry to pk design.txt (143ff61)
+- add Aquino-Michaels' Completing Claude's Cycles paper to references (be1fcf3)
+- add formalism journal entry to pk design.txt (8d36afb)
+- add v0.15.0 release notes for pk (51e7a25)
+
 ## [v0.2.8] - 2026-04-25
 
 ### Documentation
@@ -188,3 +198,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.6]: https://github.com/markwharton/plankit.com/compare/v0.2.5...v0.2.6
 [v0.2.7]: https://github.com/markwharton/plankit.com/compare/v0.2.6...v0.2.7
 [v0.2.8]: https://github.com/markwharton/plankit.com/compare/v0.2.7...v0.2.8
+[v0.2.9]: https://github.com/markwharton/plankit.com/compare/v0.2.8...v0.2.9
