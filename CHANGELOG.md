@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.3.0] - 2026-04-29
+
+### Added
+
+- mark external links with NE arrow icon (8412988)
+
 ## [v0.2.9] - 2026-04-28
 
 ### Documentation
@@ -199,3 +205,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.7]: https://github.com/markwharton/plankit.com/compare/v0.2.6...v0.2.7
 [v0.2.8]: https://github.com/markwharton/plankit.com/compare/v0.2.7...v0.2.8
 [v0.2.9]: https://github.com/markwharton/plankit.com/compare/v0.2.8...v0.2.9
+[v0.3.0]: https://github.com/markwharton/plankit.com/compare/v0.2.9...v0.3.0
