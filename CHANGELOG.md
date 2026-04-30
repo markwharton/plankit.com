@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.3.2] - 2026-04-30
+
+### Documentation
+
+- update pk skills list to match v0.15.1 consolidation (213c85e)
+
 ## [v0.3.1] - 2026-04-30
 
 ### Documentation
@@ -217,3 +223,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.9]: https://github.com/markwharton/plankit.com/compare/v0.2.8...v0.2.9
 [v0.3.0]: https://github.com/markwharton/plankit.com/compare/v0.2.9...v0.3.0
 [v0.3.1]: https://github.com/markwharton/plankit.com/compare/v0.3.0...v0.3.1
+[v0.3.2]: https://github.com/markwharton/plankit.com/compare/v0.3.1...v0.3.2
