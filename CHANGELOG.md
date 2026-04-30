@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [v0.3.1] - 2026-04-30
+
+### Documentation
+
+- add v0.15.1 release notes for pk (ec9e470)
+
+### Maintenance
+
+- update pk-managed files for v0.15.1 (a44fa1f)
+
 ## [v0.3.0] - 2026-04-29
 
 ### Added
@@ -206,3 +216,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [v0.2.8]: https://github.com/markwharton/plankit.com/compare/v0.2.7...v0.2.8
 [v0.2.9]: https://github.com/markwharton/plankit.com/compare/v0.2.8...v0.2.9
 [v0.3.0]: https://github.com/markwharton/plankit.com/compare/v0.2.9...v0.3.0
+[v0.3.1]: https://github.com/markwharton/plankit.com/compare/v0.3.0...v0.3.1
