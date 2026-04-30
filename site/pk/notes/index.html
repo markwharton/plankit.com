@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.15.1 &mdash; 2026-04-30 &mdash; fewer skills, same workflow</h2>
+    <p><strong><code>pk setup</code></strong> now installs three skills instead of five &mdash; <code>/init</code>, <code>/preserve</code>, and <code>/ship</code>. The standalone <code>/changelog</code> and <code>/release</code> skills are gone, since <code>/ship</code> already chained both with preview+confirm at each step. If you were using <code>/changelog</code> followed by <code>/release</code>, switch to <code>/ship</code>. The underlying <code>pk changelog</code> and <code>pk release</code> CLI commands are unchanged &mdash; power users who type them directly won't notice a difference.</p>
+    <p>The <a href="https://github.com/markwharton/plankit/blob/main/docs/methodology.md">methodology</a> has been restructured into 14 scannable sections &mdash; same content, less essay. <a href="https://github.com/markwharton/plankit/blob/main/docs/anti-patterns.md#silent-semantic-narrowing">Silent semantic narrowing</a> &mdash; Claude's habit of adding defensive bounds that quietly drop data &mdash; is now documented as an anti-pattern.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.15.0 &mdash; 2026-04-28 &mdash; self-cleaning setup, trunk releases, methodology refresh</h2>
     <p>Run <strong><code>pk setup</code></strong> after upgrading and it now removes managed files that newer pk versions have deprecated &mdash; but only if you haven't touched them. The <code>pk_sha256</code> hash gates the removal: customized files are preserved with a warning, and files you authored yourself are left alone.</p>
     <p>Trunk-based projects are now first-class in <code>/ship</code>. If your repo commits directly to a single branch with no develop&rarr;main split, omit <code>release.branch</code> from <code>.pk.json</code> and <code>pk release</code> tags HEAD, pushes the branch and tag, no merge step. The docs and the <code>/ship</code> skill text now cover both the trunk flow and the merge flow side by side, without presuming one.</p>
