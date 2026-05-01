@@ -28,6 +28,13 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.16.0 &mdash; 2026-05-02 &mdash; setup that remembers</h2>
+    <p><strong><code>pk setup</code></strong> now preserves your mode configuration. Previously, re-running <code>pk setup</code> after upgrading would silently reset <code>--guard</code> and <code>--preserve</code> to their defaults. Now it infers the current modes from your existing <code>settings.json</code>. Pass <code>--guard</code> or <code>--preserve</code> explicitly only when you want to change them.</p>
+    <p><strong><code>/init</code></strong> works without <code>pk setup</code>. If <code>CLAUDE.md</code> doesn't exist when you run <code>/init</code>, it creates the Critical Rules header for you and continues. No more chicken-and-egg between setup and init.</p>
+    <p><strong><code>$VERSION</code></strong> in <code>.pk.json</code> lifecycle hooks now works on Windows, macOS, and Linux. pk pre-expands variables before passing the command to the shell, so hook authors write <code>$VERSION</code> once and it works everywhere.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.15.1 &mdash; 2026-04-30 &mdash; fewer skills, same workflow</h2>
     <p><strong><code>pk setup</code></strong> now installs three skills instead of five &mdash; <code>/init</code>, <code>/preserve</code>, and <code>/ship</code>. The standalone <code>/changelog</code> and <code>/release</code> skills are gone, since <code>/ship</code> already chained both with preview+confirm at each step. If you were using <code>/changelog</code> followed by <code>/release</code>, switch to <code>/ship</code>. The underlying <code>pk changelog</code> and <code>pk release</code> CLI commands are unchanged &mdash; power users who type them directly won't notice a difference.</p>
     <p>The <a href="https://github.com/markwharton/plankit/blob/main/docs/methodology.md">methodology</a> has been restructured into 14 scannable sections &mdash; same content, less essay. <a href="https://github.com/markwharton/plankit/blob/main/docs/anti-patterns.md#silent-semantic-narrowing">Silent semantic narrowing</a> &mdash; Claude's habit of adding defensive bounds that quietly drop data &mdash; is now documented as an anti-pattern.</p>
