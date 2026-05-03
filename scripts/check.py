@@ -7,7 +7,7 @@ Verifies:
   3. Internal href/src links resolve to a real file under site/.
      External links (http://, https://, mailto:) are skipped.
   4. Footer link consistency — every page shares the same chain:
-     home / pk / mcp-bridge / signals / privacy.
+     home / pk / mcp-bridge / signals / references / privacy.
 
 Run from the repo root:
   python3 scripts/check.py

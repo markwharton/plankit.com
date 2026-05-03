@@ -20,13 +20,13 @@ IMPORTANT: Follow these rules at all times.
 - **Static HTML/CSS site** — no build system, no framework, no JavaScript. All deployed content lives in `site/`.
 - **GitHub Pages deploys from `main`** via `.github/workflows/pages.yml`, filtered on `site/**` path changes. Custom domain in `site/CNAME` (plankit.com).
 - **One shared stylesheet** at `site/style.css`, linked by every page. Design tokens live in `:root`. No inline `<style>` blocks — `scripts/check.py` enforces this.
-- **Page tree:** `site/index.html` (landing); tool landings at `site/pk/`, `site/mcp-bridge/`, `site/signals/`, each with an optional `notes/` sub-page for release notes; plus `site/privacy/` and `site/404.html`. Update `site/sitemap.xml` when adding a page.
+- **Page tree:** `site/index.html` (landing); tool landings at `site/pk/`, `site/mcp-bridge/`, `site/signals/`, each with an optional `notes/` sub-page for release notes; plus `site/references/`, `site/privacy/`, and `site/404.html`. Update `site/sitemap.xml` when adding a page.
 
 ### Design system
 
 - **Typography:** Source Serif 4 (body) + Inter (UI/labels) + SF Mono (code), referenced via `--font-body`, `--font-ui`, `--font-mono` tokens. Web fonts load from Bunny Fonts (privacy-respecting drop-in for Google Fonts) — preconnect + stylesheet `<link>` go in each page's `<head>` before `/style.css`.
 - **Tokens:** colors (`--bg`, `--text`, `--muted`, `--accent`, `--rule`, `--code-bg`); type scale (`--text-xs`…`--text-3xl`, plus `--text-body` 18px); spacing scale (`--space-1` 4px through `--space-11` 120px); plus `--max-width` 720px and `--transition` 0.2s. Reach for tokens before literals.
-- **Layout:** `--max-width: 720px`, single-column. Top mark → h1 → italic subtitle. Footer line (unified across all pages): `home · pk · mcp-bridge · signals · privacy`.
+- **Layout:** `--max-width: 720px`, single-column. Top mark → h1 → italic subtitle. Footer line (unified across all pages): `home · pk · mcp-bridge · signals · references · privacy`.
 - **List patterns:** `.tools` for the landing-page tool grid (`--text-base` Inter title, `--space-4` row padding); `.features` for in-page title-and-description lists (`--text-md` Inter title, `--space-3` padding); `.commands` for mono command + description rows; `.steps` for numbered counter lists. The list scaffold (no bullets, top/bottom row borders) is shared via comma-separated selectors. `.features` and `.tools` use `<strong>` for the title and `<span>` for the description; descriptions match `> li > span` only, so don't nest other spans inside list rows.
 - **Link affordance:** the global `a` rule provides accent color, transparent border-bottom, and a `:hover` / `:focus-visible` underline. Don't redeclare it on per-region rules — only override what differs (e.g. `.mark a` overrides color to muted).
 
