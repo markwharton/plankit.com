@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.18.0 &mdash; 2026-05-06 &mdash; /ship auto</h2>
+    <p>Type <strong><code>/ship auto</code></strong> and the release workflow runs end-to-end without pausing. Same dry-run safety checks at each step &mdash; if either preview hits an error, it stops and asks. Otherwise: changelog, tag, merge, push, done.</p>
+    <p>Also new: a <a href="https://github.com/markwharton/plankit/blob/main/docs/versioning.md">versioning guide</a> covering how to flow tag-derived versions into project files &mdash; <code>versionFiles</code> for JSON, <code>pk pin --name</code> for source constants, ldflags for build-time injection, and hook scripts for frameworks with no built-in version sync.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.17.0 &mdash; 2026-05-05 &mdash; flexible version pinning</h2>
     <p><strong><code>pk pin --name</code></strong> pins versions in any file with an identifier assignment, not just shell variables. A Go project with <code>const version = "0.1.0"</code> in <code>main.go</code> can now use:</p>
     <pre>"preCommit": "pk pin --file cmd/myapp/main.go --name version $VERSION"</pre>
