@@ -28,6 +28,13 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.17.0 &mdash; 2026-05-05 &mdash; flexible version pinning</h2>
+    <p><strong><code>pk pin --name</code></strong> pins versions in any file with an identifier assignment, not just shell variables. A Go project with <code>const version = "0.1.0"</code> in <code>main.go</code> can now use:</p>
+    <pre>"preCommit": "pk pin --file cmd/myapp/main.go --name version $VERSION"</pre>
+    <p>Works with Go constants, Python <code>__version__</code>, TOML version fields, and anything else that assigns a quoted string. The v-prefix is inferred from the existing value &mdash; bare stays bare, prefixed stays prefixed. The legacy shell-variable pattern (<code>PK_VERSION="v..."</code>) still works without <code>--name</code>, unchanged.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.16.0 &mdash; 2026-05-02 &mdash; setup that remembers</h2>
     <p><strong><code>pk setup</code></strong> now preserves your mode configuration. Previously, re-running <code>pk setup</code> after upgrading would silently reset <code>--guard</code> and <code>--preserve</code> to their defaults. Now it infers the current modes from your existing <code>settings.json</code>. Pass <code>--guard</code> or <code>--preserve</code> explicitly only when you want to change them.</p>
     <p><strong><code>/init</code></strong> works without <code>pk setup</code>. If <code>CLAUDE.md</code> doesn't exist when you run <code>/init</code>, it creates the Critical Rules header for you and continues. No more chicken-and-egg between setup and init.</p>
