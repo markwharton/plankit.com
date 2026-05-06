@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.19.0 &mdash; 2026-05-07 &mdash; Private repos and init polish</h2>
+    <p><strong><code>/new-plankit-project</code></strong> now supports private repos. Pass <code>private &lt;org&gt;</code> to create a private repo under a GitHub org. The emitted script handles the differences: no license file, <code>--private</code> flag, empty anchor commit, and org-scoped paths.</p>
+    <p><strong><code>/init</code></strong>&rsquo;s question format was also simplified, restoring one-at-a-time presentation.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.18.0 &mdash; 2026-05-06 &mdash; /ship auto</h2>
     <p>Type <strong><code>/ship auto</code></strong> and the release workflow runs end-to-end without pausing. Same dry-run safety checks at each step &mdash; if either preview hits an error, it stops and asks. Otherwise: changelog, tag, merge, push, done.</p>
     <p>Also new: a <a href="https://github.com/markwharton/plankit/blob/main/docs/versioning.md">versioning guide</a> covering how to flow tag-derived versions into project files &mdash; <code>versionFiles</code> for JSON, <code>pk pin --name</code> for source constants, ldflags for build-time injection, and hook scripts for frameworks with no built-in version sync.</p>
