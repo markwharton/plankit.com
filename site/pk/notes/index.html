@@ -28,6 +28,12 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.20.0 &mdash; 2026-05-27 &mdash; Use what you need</h2>
+    <p><code>pk setup</code> now accepts <strong><code>--guard off</code></strong> and <strong><code>--preserve off</code></strong>. If you want release management (<code>pk changelog</code> / <code>pk release</code> / <code>/ship</code>) without plan preservation, run <code>pk setup --preserve off</code>. Same for branch protection: <code>--guard off</code> disables the guard hook entirely. Already-committed plans in <code>docs/plans/</code> stay protected regardless &mdash; <code>pk protect</code> is unconditional.</p>
+    <p><strong>Windows</strong>: hooks and skills now explicitly specify Bash as their shell. When Claude Code uses PowerShell as its primary shell (<code>CLAUDE_CODE_USE_POWERSHELL_TOOL</code>), plankit&rsquo;s hooks were silently receiving no stdin payload &mdash; plan preservation broke without warning. That&rsquo;s fixed. The guard matcher also widened to catch commands run through either Bash or PowerShell, closing a bypass gap.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.19.0 &mdash; 2026-05-07 &mdash; Private repos and init polish</h2>
     <p><strong><code>/new-plankit-project</code></strong> now supports private repos. Pass <code>private &lt;org&gt;</code> to create a private repo under a GitHub org. The emitted script handles the differences: no license file, <code>--private</code> flag, empty anchor commit, and org-scoped paths.</p>
     <p><strong><code>/init</code></strong>&rsquo;s question format was also simplified, restoring one-at-a-time presentation.</p>
