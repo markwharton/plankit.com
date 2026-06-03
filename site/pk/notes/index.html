@@ -28,6 +28,18 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.21.0 &mdash; 2026-06-03 &mdash; Less friction in setup and release</h2>
+    <p><strong><code>pk setup</code></strong> now points you at <code>/conventions</code> when it finds no <code>.pk.json</code>, so a fresh repo gets nudged to define its conventions instead of running config-less.</p>
+    <p><strong><code>/ship</code></strong> now ignores a version tacked onto it &mdash; the number comes from your commits, computed by <code>pk changelog</code>, so Claude can&rsquo;t derail a release by guessing one.</p>
+    <p>The development standard pk ships into your repo also gained a debugging rule: a failed text search means &ldquo;not found by this method,&rdquo; never &ldquo;not present.&rdquo; A grep miss against escaped JSON or an encoded ID can send Claude chasing a bug that isn&rsquo;t there.</p>
+  </div>
+
+  <div class="section">
+    <h2>v0.20.3 &mdash; 2026-05-31 &mdash; Hardening the files pk writes into your repo</h2>
+    <p>The rules and skills <strong><code>pk setup</code></strong> installs are now scanned for hidden and invisible characters &mdash; zero-width spaces, bidi overrides, the &ldquo;Trojan Source&rdquo; class &mdash; before they ship. AI agents read these files every session, so a hidden instruction would fan out to every project. Now it can&rsquo;t slip in.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.20.0 &mdash; 2026-05-27 &mdash; Use what you need</h2>
     <p><code>pk setup</code> now accepts <strong><code>--guard off</code></strong> and <strong><code>--preserve off</code></strong>. If you want release management (<code>pk changelog</code> / <code>pk release</code> / <code>/ship</code>) without plan preservation, run <code>pk setup --preserve off</code>. Same for branch protection: <code>--guard off</code> disables the guard hook entirely. Already-committed plans in <code>docs/plans/</code> stay protected regardless &mdash; <code>pk protect</code> is unconditional.</p>
     <p><strong>Windows</strong>: hooks and skills now explicitly specify Bash as their shell. When Claude Code uses PowerShell as its primary shell (<code>CLAUDE_CODE_USE_POWERSHELL_TOOL</code>), plankit&rsquo;s hooks were silently receiving no stdin payload &mdash; plan preservation broke without warning. That&rsquo;s fixed. The guard matcher also widened to catch commands run through either Bash or PowerShell, closing a bypass gap.</p>
