@@ -1,6 +1,6 @@
 ---
 description: Three-layer architecture (pk commands, hooks, skills) and hook behavior
-pk_sha256: c0fd3bd0447d6206ce0e4164c54daedb2f841958b62948957090b6755686cedf
+pk_sha256: 283debc5844404c91f9268bb6a2e62996edbe548c99736914444cfdb235c8d7a
 ---
 
 # Plankit Tooling
@@ -9,12 +9,12 @@ pk_sha256: c0fd3bd0447d6206ce0e4164c54daedb2f841958b62948957090b6755686cedf
 
 - **pk commands:** Standalone CLI tools that power everything below. You don't run these directly; hooks and skills handle that.
 - **Hooks:** Wire pk commands into Claude Code events. They run automatically and you receive their output (block decisions, ask prompts, notifications). Described below.
-- **Skills:** User-invoked workflows (`/init`, `/preserve`, `/ship`). Each has its own instructions. Execute them only when the user asks.
+- **Skills:** User-invoked workflows (`/conventions`, `/preserve`, `/ship`). Each has its own instructions. Execute them only when the user asks. When suggesting `/ship` as a next step, write it bare: never append a version (`/ship`, not `/ship v0.4.0`). `/ship` takes no version; the version is computed by `pk changelog` and revealed by its dry-run.
 
 ## Hook Behavior
 
 - **`pk guard` blocks git mutations on protected branches.** If the project uses ask mode, you will be prompted instead; respect the user's decision either way. When blocked, switch to the development branch.
-- **`pk protect` blocks edits to pk-managed files.** The block reason tells you why. Adjust your approach; don't try to work around it.
+- **`pk protect` blocks edits to `docs/plans/`.** Preserved plans are immutable historical records. The block reason tells you why. Adjust your approach; don't try to work around it.
 - **`pk preserve` runs after exiting plan mode.** Behavior depends on project configuration; it may preserve automatically or notify that a plan is ready. When it runs automatically, surface the outcome to the user, including any commits created or pushes attempted. If the user types `/preserve`, dispatch the skill as your next action. Never queue it behind implementation work. `/preserve` is an explicit request, not a go-signal for something else.
 
 ## Session Bootstrap
@@ -27,5 +27,7 @@ pk_sha256: c0fd3bd0447d6206ce0e4164c54daedb2f841958b62948957090b6755686cedf
 
 ## Flag Conventions
 
-- **`--push` means "publish this, fully."** When a pk command supports `--push`, it publishes whatever that command produced, including any refs needed to make it reachable on origin. For a tagging command, that includes the branch the tag sits on. `--push` always means "push what I just did, complete," never a narrower partial push. The default behavior (no `--push`) is local-only, consistent with the git-discipline rule that commit and push are separate decisions.
-- **`--at <ref>` narrows `--push` to the explicit target.** When a pk command accepts `--at <ref>` to operate on a specific ref rather than HEAD, `--push` publishes only the thing produced at that ref, not HEAD or its branch. The user picked the ref; pk doesn't assume which branch goes with it.
+- **`--push` exists only on `pk setup --baseline` and `pk preserve`.** On those commands it means "publish what I just produced, fully": pushing any refs needed to make it reachable on origin (for a tag, the branch it sits on), never a partial push. Without `--push` they stay local-only, because commit and push are separate decisions (git-discipline). No other pk command takes `--push`.
+- **`--at <ref>` narrows `--push` to that ref.** When a command accepts `--at <ref>`, `--push` publishes only what was produced at that ref, not HEAD or its branch. The user picked the ref; pk doesn't assume the branch.
+- **`pk release` has no `--push`; it publishes atomically.** It fast-forward merges into the release branch, tags, and pushes in one step; the only flag is `--dry-run` (preview). Passing `--push` errors.
+- **Don't infer a pk flag from another command; check `pk <cmd> --help`.** Each command's `--help` is the authoritative, always-current flag list and can't drift from the binary the way a copied list can. Flag conventions aren't universal: a flag on one command, like `--push` on `pk setup --baseline`, may not exist on another, so when unsure run `pk <cmd> --help` rather than assuming.
