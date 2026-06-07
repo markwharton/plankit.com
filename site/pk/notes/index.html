@@ -28,6 +28,13 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.22.0 &mdash; 2026-06-07 &mdash; See what your rules cost, and guard your pushes</h2>
+    <p><strong><code>pk rules</code></strong> shows what your rules actually cost. It reports the always-on context footprint of your <code>.claude/rules/</code> and <code>CLAUDE.md</code> &mdash; total and per file &mdash; with each rule&rsquo;s provenance (pk-managed, modified, or your own) and its craft-or-conduct kind. Token counts are calibrated against a real tokenizer, not the usual chars/4 guess, which runs about 25% low for this kind of markdown. Add <code>--lint</code> to scan rule files for hidden or Trojan-source characters, or <code>--lint --strict</code> for plankit&rsquo;s house-style checks. It only reports &mdash; it writes no files.</p>
+    <p><strong><code>pk setup --push-guard block</code></strong> is a new opt-in dial on <code>pk guard</code>. The guard already blocks git mutations on protected branches; push-guard goes further and blocks the agent from running <code>git push</code> on <em>any</em> branch. Commit and push stay separate decisions: the agent commits, you decide when to publish &mdash; or let <code>pk preserve</code> and <code>pk release</code> push through pk. Off by default; turn it on when you want every push to be your call.</p>
+    <p>plankit now states its own shipped-rules footprint in the README &mdash; being honest about the always-on context cost it adds to every session. <code>pk rules</code> gives you the same number for your project.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.21.0 &mdash; 2026-06-03 &mdash; Less friction in setup and release</h2>
     <p><strong><code>pk setup</code></strong> now points you at <code>/conventions</code> when it finds no <code>.pk.json</code>, so a fresh repo gets nudged to define its conventions instead of running config-less.</p>
     <p><strong><code>/ship</code></strong> now ignores a version tacked onto it &mdash; the number comes from your commits, computed by <code>pk changelog</code>, so Claude can&rsquo;t derail a release by guessing one.</p>
