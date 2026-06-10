@@ -6,10 +6,10 @@
         "hooks": [
           {
             "type": "command",
-            "command": "pk preserve --notify",
+            "command": "pk preserve",
             "shell": "bash",
-            "timeout": 10,
-            "statusMessage": "Checking plan..."
+            "timeout": 30,
+            "statusMessage": "Preserving plan..."
           }
         ]
       }
