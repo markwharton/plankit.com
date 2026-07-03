@@ -28,6 +28,11 @@
   <p class="subtitle">What's new in pk, and how to use it.</p>
 
   <div class="section">
+    <h2>v0.25.0 &mdash; 2026-06-24 &mdash; Homebrew-aware update notice</h2>
+    <p>If you installed pk with <strong>Homebrew</strong>, the update notice now speaks your language. When a newer version is available, pk detects how it was installed and suggests the right upgrade command: <code>brew upgrade plankit</code> for Homebrew installs, <code>go install</code> for everyone else. No more copying a command that doesn&rsquo;t match how you got pk. Homebrew is also now documented as an install option in the <a href="https://github.com/markwharton/plankit#readme">README</a>, alongside <code>go install</code> and release binaries.</p>
+  </div>
+
+  <div class="section">
     <h2>v0.24.0 &mdash; 2026-06-12 &mdash; Release readiness and one voice</h2>
     <p><strong><code>pk status</code></strong> now reports release readiness. Run it before shipping and it tells you what&rsquo;s standing between you and a release &mdash; a missing baseline tag, a release branch not on origin, unpushed work &mdash; each with the exact command to fix it. And when the working branch itself is missing, errors now point at the failure point instead of leaving you to guess.</p>
     <p><strong><code>/conventions</code></strong> now guides the move between branch strategies. Switching a project from main-only to develop&rarr;main (or back) used to mean rewiring <code>.pk.json</code> by hand; the skill now walks the transition. A new <a href="https://github.com/markwharton/plankit/blob/main/docs/adoption.md#moving-between-setups">moving-between-setups guide</a> covers the details.</p>
